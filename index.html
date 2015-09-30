@@ -4,8 +4,47 @@
 <head>
     <meta charset="utf-8" />
     <title>Simple Online Editor</title>
-</head>
+    <style>
+    .editorContainer {
+        margin: auto;
+        width: 60%;
+        height: 350px;
+       /* border: 3px solid #99FFFF;*/
+        padding: 10px;
+
+    }
+    .editorToolbar {
+        margin: auto;
+        width: auto;
+        /*border: 1px solid #99FFFF;*/
+        padding: 5px;
+        padding-top: auto;
+    }
+    .contentEditableRegion {
+        width: 99%;
+        height: 240px;
+        /*margin: auto;*/
+        border: 1px solid #A0A0A0 ;
+        padding: 10px;
+        background-color: white;
+    }
+    </style>
+
+    <script src="js/editing.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="jquery-1.11.3/jquery-1.11.3.js" ></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //initialize editor js file
+            var editorInst = new editor();
+            editorInst.initialize();
+
+        });
+    </script>
+ 
 <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+</head>
+ 
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -18,7 +57,7 @@
                 </button>
                 <a class="navbar-brand" href="#">Online Editor</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse">                
                 <!-- <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">btn1</a></li>
@@ -38,13 +77,35 @@
                 </ul> -->
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-    </nav>
-    
-
-    <div class="container">
-        Test
-    </div>
-    
-    
+    </nav>   
+   
+    <div class="jumbotron editorContainer">
+        <div class="editorToolbar">
+             <div class="container bs-docs-container editorCommandsContainer">
+                <div class="row">
+                    <div class="col-md-9" role="main">
+                        <div class="bs-docs-section">
+                            <div class="bs-example" data-example-id="button-group-nesting">
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <button id="copy" class="btn btn-default" type="button">copy</button>
+                                    <button class="btn btn-default" type="button">2</button>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-default dropdown-toggle" id="btnGroupDrop1" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown">Dropdown
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <li><a href="#">Dropdowns link</a>s</li>
+                                            <li><a href="#">Dropdown slink</a>2</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="editor" contentEditable = "true" class="contentEditableRegion"></div>
+    </div>   
 </body>
 </html>
